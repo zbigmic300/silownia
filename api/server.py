@@ -27,27 +27,3 @@ api.add_resource(WeekReservationsResource, '/week/reservations')
 
 if __name__ == '__main__':
     app.run(port='5002', debug=True)
-
-# todo prepare list of resources
-# USER
-# get - get user data
-# put - update user
-# patch - change password
-# post - create user application (inactive)
-
-# USERS (ADMIN)
-# get - get users
-# post - create new user (active)
-# put - modify user
-# delete - remove user
-# patch - activate user
-
-# LOGIN
-# post login
-# post logout 1
-# post logout 2
-
-# RESERVATION
-# post reserve
-# delete delete
-# get get data
