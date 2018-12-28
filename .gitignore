@@ -1,0 +1,6 @@
+*.pyc
+.DS_Store
+/.tox
+/MANIFEST
+/dist
+/Flask_API_Utils.egg-info
