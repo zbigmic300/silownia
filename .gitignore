@@ -6,4 +6,4 @@
 /Flask_API_Utils.egg-info
 /.idea
 /.vscode
-/api/logs/*
+/api/logs/flask_app.log

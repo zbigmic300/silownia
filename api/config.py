@@ -11,7 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 from api.db_lib.data_access import UniversalDAO
 
 # logging
-dictConfig(json.load(open('api/logging.json')))
+dictConfig(json.load(open('api/logs/logging.json')))
 
 
 class BaseConfig(object):
