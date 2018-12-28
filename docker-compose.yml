@@ -1,0 +1,36 @@
+version: "3.1"
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: PSQLDockerfile
+    env_file: .env
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+    networks:
+      - db_net
+    ports:
+      - "5432:5432"
+  app:  
+    build: .
+    env_file: .env
+    deploy:
+      replicas: 5
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "4000:5090"
+    networks:
+      - db_net
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+networks:
+  db_net:

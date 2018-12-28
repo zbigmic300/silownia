@@ -5,6 +5,15 @@ Install these python packages:
     
     pip install -r requirements.txt 
     
+## How to Dockerize an application? ###
+    docker-compose build
+    docker-compose up
+
+### app should work in your host on http://localhost:4000/login
+    
+    
+
+    
 ## Available API
 ### /login  
 - file: resources/access_resource  
