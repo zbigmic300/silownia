@@ -12,8 +12,8 @@ services:
     networks:
       - db_net
     ports:
-      - "5432:5432"
-  app:  
+      - "5433:5432"
+  app:
     build: .
     env_file: .env
     deploy:

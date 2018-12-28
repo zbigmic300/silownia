@@ -11,7 +11,8 @@ from flask_sqlalchemy import SQLAlchemy
 from api.db_lib.data_access import UniversalDAO
 
 # logging
-# dictConfig(json.load(open('logging.json')))
+dictConfig(json.load(open('api/logging.json')))
+
 
 class BaseConfig(object):
     # SECRET_KEY = os.environ['SECRET_KEY']
@@ -25,13 +26,13 @@ class BaseConfig(object):
     )
 
 
-
 # init Flask app
 app = Flask(__name__)
-app.config.from_object(BaseConfig)
+
 # specify parameters
 #  sqlalchemy db connection
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config.from_object(BaseConfig)
 
 #  jwt
 app.config['JWT_SECRET_KEY'] = 'secret_made_by_david_totally_impregnable'
@@ -41,7 +42,7 @@ app.config['JWT_USER_CLAIMS'] = 'identity'
 app.config['JWT_BLACKLIST_ENABLED'] = True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
 
-#  customer
+#  custom
 app.config['MAX_AMOUNT_OF_TIME_AT_GYM_PER_WEEK'] = timedelta(hours=3)
 app.config['MAX_INACTIVITY_TIME'] = timedelta(days=180)
 

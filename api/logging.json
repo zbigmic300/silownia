@@ -16,7 +16,7 @@
       "class": "logging.FileHandler",
       "level": "DEBUG",
       "formatter": "default",
-      "filename": "logs/flask_app.log"
+      "filename": "api/logs/flask_app.log"
     }
   },
   "root": {
