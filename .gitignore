@@ -4,3 +4,6 @@
 /MANIFEST
 /dist
 /Flask_API_Utils.egg-info
+/.idea
+/.vscode
+/api/logs/*
