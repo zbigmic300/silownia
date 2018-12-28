@@ -3,17 +3,17 @@
 ## How do I get set up? ###
 Install these python packages:  
     
-    pip install -U psycopg2  
-    pip install -U marshmallow  
-    pip install -U SQLAlchemy  
-    pip install -U marshmallow-sqlalchemy  
-    pip install -U PyJWT  
-    pip install -U Flask  
-    pip install -U Flask-SQLAlchemy  
-    pip install -U flask-marshmallow  
-    pip install -U Flask-RESTful  
-    pip install -U Flask-JWT-Extended  
+    pip install -r requirements.txt 
+    
+## How to Dockerize an application? ###
+    docker-compose build
+    docker-compose up
 
+### app should work in your host on http://localhost:4000/login
+    
+    
+
+    
 ## Available API
 ### /login  
 - file: resources/access_resource  

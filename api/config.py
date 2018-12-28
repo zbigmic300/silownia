@@ -1,7 +1,7 @@
 import json
 from datetime import timedelta
 from logging.config import dictConfig
-
+import os
 from flask import Flask
 from flask_jwt_extended import JWTManager
 from flask_marshmallow import Marshmallow
@@ -11,14 +11,26 @@ from flask_sqlalchemy import SQLAlchemy
 from api.db_lib.data_access import UniversalDAO
 
 # logging
-dictConfig(json.load(open('logging.json')))
+# dictConfig(json.load(open('logging.json')))
+
+class BaseConfig(object):
+    # SECRET_KEY = os.environ['SECRET_KEY']
+    DB_NAME = os.environ['DB_NAME']
+    DB_USER = os.environ['DB_USER']
+    DB_PASS = os.environ['DB_PASS']
+    DB_SERVICE = os.environ['DB_SERVICE']
+    DB_PORT = os.environ['DB_PORT']
+    SQLALCHEMY_DATABASE_URI = 'postgresql://{0}:{1}@{2}:{3}/{4}'.format(
+        DB_USER, DB_PASS, DB_SERVICE, DB_PORT, DB_NAME
+    )
+
+
 
 # init Flask app
 app = Flask(__name__)
-
+app.config.from_object(BaseConfig)
 # specify parameters
 #  sqlalchemy db connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://test_user:test_user@localhost:5432/LibTest'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #  jwt
