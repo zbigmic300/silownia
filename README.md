@@ -9,11 +9,8 @@ Install these python packages:
     docker-compose build
     docker-compose up
 
-### app should work in your host on http://localhost:4000/login
-    
-    
+Application should work in your host on http://localhost:4000/login
 
-    
 ## Available API
 ### /login  
 - file: resources/access_resource  
@@ -137,7 +134,6 @@ Install these python packages:
 ### /reservations  
 - file: resources/reservation_resource  
 - class: ReservationsResource  
-- parameter: user_id - id of user  
 - GET  
   - description: get user's reservations  
   - jwt: access_token  
