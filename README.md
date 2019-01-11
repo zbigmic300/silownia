@@ -8,6 +8,16 @@ Install these python packages:
 ## How to Dockerize an application? ###
     docker-compose build
     docker-compose up
+    
+### if docker image has been changed and pushed to repository first try commend :
+    docker pull zbigmic300/silownia-app
+    
+
+## How to update existing docker images ?? 
+    docker build -t silownia-app .
+    docker tag silownia-app zbigmic300/silownia-app
+    docker push zbigmic300/silownia-app
+
 
 Application should work in your host on http://localhost:4000/login
 
