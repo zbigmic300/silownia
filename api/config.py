@@ -3,6 +3,7 @@ from datetime import timedelta
 from logging.config import dictConfig
 import os
 from flask import Flask
+from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_marshmallow import Marshmallow
 from flask_restful import Api
@@ -45,6 +46,9 @@ app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
 #  custom
 app.config['MAX_AMOUNT_OF_TIME_AT_GYM_PER_WEEK'] = timedelta(hours=3)
 app.config['MAX_INACTIVITY_TIME'] = timedelta(days=180)
+
+# allow CORS
+CORS(app)
 
 # init db
 db = SQLAlchemy(app)
