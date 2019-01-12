@@ -72,4 +72,4 @@ class RefreshResource(Resource):
     @jwt_refresh_token_required
     def post(self):
         current_user = get_current_user()
-        return tokenResponse(create_access_token(current_user))
+        return tokenResponse(create_access_token({"login": current_user.login}))
