@@ -1,0 +1,47 @@
+<form [formGroup]="form" (ngSubmit)="register(form)">
+  <div style="display: flex; justify-content: center">
+    <mat-card style="max-width: 400px; margin: 5px;">
+      <mat-card-header>
+        <mat-card-title>Sign up</mat-card-title>
+        <mat-card-subtitle>Please enter user information</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div>
+          <mat-form-field>
+            <input matInput formControlName="login" placeholder="Login">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput formControlName="password" placeholder="Password">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput formControlName="first_name" placeholder="First name">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput formControlName="last_name" placeholder="Last name">
+          </mat-form-field>
+        </div>
+        <div style="margin: 5px">
+          <mat-slide-toggle (change)="isAdmin = $event.checked">Is admin?</mat-slide-toggle>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput formControlName="room" placeholder="Room">
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions style="margin-left: 0px; margin-right: 0px;">
+        <div>
+          <button mat-raised-button type="submit">Register</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</form>
+
+
