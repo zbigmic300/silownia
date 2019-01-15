@@ -38,3 +38,8 @@ def isBlacklisted(decrypted_token):
         return False
     # token still active
     return True
+
+
+def getUserClaims(payload):
+    user = dao.getByUnique(User, 'login', payload.get('login'))
+    return 'admin' if user.admin else 'user'
