@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Adding reservation</mat-card-title>
+    <mat-card-subtitle>Please check reservation information</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="mat-body-1">Reservation duration: </div><br/>
+    <div>
+      <span style="font-size: 14px" class="mat-body-2">{{startDate | date: 'medium'}}</span>
+      <span style="margin-left: 10px; margin-right: 10px">to</span>
+      <span style="font-size: 14px" class="mat-body-2">{{endDate | date: 'medium'}}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions style="margin-left: 0px; margin-right: 0px;">
+    <div>
+      <button mat-raised-button style="background-color: #101010" (click)="add()">Add</button>
+      <button mat-flat-button (click)="close()">Close</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+
+
