@@ -1,10 +1,9 @@
-from datetime import datetime, timedelta
-
 from flask_jwt_extended import get_current_user, jwt_required
 from flask_restful import Resource
 
 from api.config import dao, app
-from api.models.reservations import ReservationSchema, Reservation
+from api.models.reservations import Reservation
+from api.models.schemas import ReservationSchema
 from api.resources.requests import reservationRequest
 from api.utils.datetime_utils import startOfWeek, currentDate
 from api.utils.reservation_utils import checkDateRelations, checkOverlapping, checkUserBookedInterval

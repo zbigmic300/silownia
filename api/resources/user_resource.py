@@ -1,10 +1,11 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from flask_jwt_extended import get_current_user, jwt_required
 from flask_restful import Resource
 
 from api.config import dao, app
-from api.models.users import User, UserSchema
+from api.models.schemas import UserSchema
+from api.models.users import User
 from api.resources.requests import simpleModifyUserRequest, simpleCreateUserRequest
 from api.utils.datetime_utils import startOfWeek, currentDate
 from api.utils.response_utils import defaultErrorResponse, response, defaultErrorLogMessage
