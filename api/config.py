@@ -1,7 +1,8 @@
 import json
+import os
 from datetime import timedelta
 from logging.config import dictConfig
-import os
+
 from flask import Flask
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
@@ -39,7 +40,7 @@ app.config.from_object(BaseConfig)
 app.config['JWT_SECRET_KEY'] = 'secret_made_by_david_totally_impregnable'
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=30)
 app.config['JWT_REFRESH_TOKEN_EXPIRES'] = timedelta(days=30)
-app.config['JWT_USER_CLAIMS'] = 'identity'
+app.config['JWT_USER_CLAIMS'] = 'role'
 app.config['JWT_BLACKLIST_ENABLED'] = True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
 

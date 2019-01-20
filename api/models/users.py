@@ -1,7 +1,6 @@
 import hashlib
-import api.models.reservations
 
-from api.config import db, ma
+from api.config import db
 from api.db_lib.model import Updateable, Removable
 
 
@@ -20,7 +19,7 @@ class User(db.Model, Updateable, Removable):
     booked_interval = db.Column(db.Interval, default='0', nullable=False)
     last_reservation_date = db.Column(db.DateTime)
 
-    reservations = db.relationship('Reservation', backref='User', lazy=True)
+    reservations = db.relationship('Reservation', back_populates='user', lazy=True)
 
     # user statuses
     WAITING_FOR_ACCEPTANCE = 'W'
@@ -39,9 +38,3 @@ class User(db.Model, Updateable, Removable):
 
     def isActive(self):
         return self.status == User.ACTIVE and self.removed_date is None
-
-
-class UserSchema(ma.ModelSchema):
-    class Meta:
-        model = User
-        sqla_session = db.session

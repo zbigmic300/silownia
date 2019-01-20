@@ -4,9 +4,10 @@ from api.resources.admin_resource import AdminUsersResource, AdminUserResource
 from api.resources.password_resource import ChangePasswordResource
 from api.resources.reservation_resource import ReservationResource, ReservationsResource, WeekReservationsResource
 from api.resources.user_resource import UserResource
-from api.utils.jwt_utils import identity, authenticate, isBlacklisted
+from api.utils.jwt_utils import identity, authenticate, isBlacklisted, getUserClaims
 
 jwt.user_identity_loader(identity)
+jwt.user_claims_loader(getUserClaims)
 jwt.user_loader_callback_loader(authenticate)
 jwt.token_in_blacklist_loader(isBlacklisted)
 

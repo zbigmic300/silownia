@@ -1,4 +1,4 @@
-from api.config import db, ma
+from api.config import db
 from api.db_lib.model import Deletable
 
 
@@ -11,9 +11,3 @@ class RevokedToken(db.Model, Deletable):
 
     def __repr__(self):
         return '<RevokedToken %s>' % self.jti
-
-
-class RevokedTokenSchema(ma.ModelSchema):
-    class Meta:
-        model = RevokedToken
-        sqla_session = db.session
