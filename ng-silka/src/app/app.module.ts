@@ -23,7 +23,7 @@ import {
   MatSlideToggleModule,
   MatGridListModule,
   MatTooltipModule,
-  MatTableModule
+  MatTableModule, MatSnackBarModule
 } from '@angular/material';
 import {ReservationCalendarComponent} from './reservation-calendar/reservation-calendar.component';
 import {CalendarModule, DateAdapter} from "angular-calendar";
@@ -44,6 +44,7 @@ import {ReservationService} from "./services/reservation/reservation.service";
 import {AuthInterceptorService} from "./auth-interceptor.service";
 import {DatePipe} from "@angular/common";
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { InactiveUserListComponent } from './inactive-user-list/inactive-user-list.component';
 
 export const MATERIAL_MODULES = [
   MatButtonModule,
@@ -63,7 +64,8 @@ export const MATERIAL_MODULES = [
   MatListModule,
   MatTooltipModule,
   MatSlideToggleModule,
-  MatTableModule
+  MatTableModule,
+  MatSnackBarModule
 ];
 
 export const PROVIDERS = [
@@ -88,7 +90,8 @@ export const PROVIDERS = [
     UserListComponent,
     AddReservationDialogComponent,
     UserListComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    InactiveUserListComponent
   ],
   imports: [
     BrowserModule,

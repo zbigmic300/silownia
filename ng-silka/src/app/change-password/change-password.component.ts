@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../services/user/user.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {MatSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-change-password',
@@ -12,7 +13,8 @@ export class ChangePasswordComponent implements OnInit {
   form: FormGroup;
 
   constructor(protected userService: UserService,
-              protected fb: FormBuilder) {
+              protected fb: FormBuilder,
+              protected snackbar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -24,6 +26,13 @@ export class ChangePasswordComponent implements OnInit {
 
   changePassword(form: FormGroup) {
     this.userService.changePassword(JSON.stringify(form.value))
-      .subscribe();
+      .subscribe(() => this.openSnackBar('Password changed', ''));
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackbar.open(message, action, {
+      duration: 2000,
+      verticalPosition: 'top'
+    });
   }
 }

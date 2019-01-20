@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {UserService} from "../services/user/user.service";
 import {Router} from "@angular/router";
+import {LoggedUserService} from "../user/logged-user.service";
 
 @Component({
   selector: 'app-navigation',
@@ -19,7 +20,13 @@ export class AppNavigationComponent {
 
   constructor(private breakpointObserver: BreakpointObserver,
               protected userService: UserService,
-              protected router: Router) {}
+              protected router: Router,
+              protected loggedUserService: LoggedUserService) {
+  }
+
+  isAdmin(){
+    return this.loggedUserService.isAdmin;
+  }
 
   logout(){
     this.userService.logout().subscribe(res => {

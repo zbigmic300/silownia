@@ -51,8 +51,9 @@ export class AuthInterceptorService implements HttpInterceptor {
           this.router.navigate(['u', 'login']);
           sessionStorage.clear();
         }
+        console.log(JSON.stringify(error.error));
         const dialogRef = this.dialog.open(ErrorDialogComponent, {
-          data: {errorMsg: error.error['message'], errorStatus: error.status}
+          data: {errorMsg: error.error['message'] ? error.error['message'] : error.error['msg'], errorStatus: error.status}
         });
         return of(null);
       }));

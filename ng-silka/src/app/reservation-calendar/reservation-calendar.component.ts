@@ -4,7 +4,7 @@ import {
   CalendarEvent,
 } from 'calendar-utils';
 import {AddReservationDialogComponent} from "../add-reservation-dialog/add-reservation-dialog.component";
-import {MatDialog} from "@angular/material";
+import {MatDialog, MatSnackBar} from "@angular/material";
 import {ReservationService} from "../services/reservation/reservation.service";
 import {DatePipe, formatDate} from "@angular/common";
 
@@ -19,32 +19,21 @@ export class ReservationCalendarComponent implements OnInit {
 
   view: CalendarView = CalendarView.Week;
 
-  events: CalendarEvent[] = [];/*[
-    {
-      title: 'Click me',
-      color: {primary: 'blue', secondary: 'red'},
-      start: new Date()
-    },
-    {
-      title: 'Or click me',
-      color: {primary: 'blue', secondary: 'red'},
-      start: new Date()
-    }
-  ];*/
+  events: CalendarEvent[] = [];
 
   constructor(protected dialog: MatDialog,
               protected reservationService: ReservationService,
-              protected datePipe: DatePipe) {
+              protected datePipe: DatePipe,
+              protected snackbar: MatSnackBar) {
   }
 
   ngOnInit() {
     this.reservationService.getWeekReservations()
       .subscribe((reservations: any[]) => {
         this.events = reservations.map(val => {
-          return {start: new Date(val.start_date), color: {primary: 'white', secondary: 'white'}, title: val.id}
+          return {start: new Date(val.start_date), color: {primary: 'white', secondary: 'white'}, title: `${val.user.first_name} ${val.user.last_name}`}
         });
-        console.log(JSON.stringify(this.events));
-      })
+      });
   }
 
   addReservation(event: { date: Date }) {
@@ -58,8 +47,14 @@ export class ReservationCalendarComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       result && this.reservationService.addReservation(JSON.stringify({start_date: startDate, end_date: endDate}))
-        .subscribe()
+        .subscribe(() => this.openSnackBar('Reservation added', ''));
     });
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackbar.open(message, action, {
+      duration: 2000,
+      verticalPosition: 'top'
+    });
+  }
 }

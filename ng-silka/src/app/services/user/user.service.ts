@@ -15,6 +15,14 @@ export class UserService {
     return <Observable<[]>>this.http.get('http://localhost:4000/admin/users', {} );
   }
 
+  getInactiveUsers(): Observable<[]> {
+    return <Observable<[]>>this.http.get('http://localhost:4000/admin/users?status=W', {} );
+  }
+
+  activate(userId: number) {
+    return this.http.patch('http://localhost:4000/admin/user/' + userId, {} );
+  }
+
   registerUser(data: any): Observable<any> {
     return this.http.post('http://localhost:4000/user', data, {headers: {'Content-Type': 'application/json'}});
   }
