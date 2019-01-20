@@ -1,15 +1,18 @@
 import {Injectable} from "@angular/core";
-
+import * as jwt_decode from "jwt-decode";
 
 @Injectable()
 export class LoggedUserService {
-  protected _userLogged: boolean = true;
 
-  get isUserLogged(): boolean{
-    return this._userLogged;
+  get isAdmin(): boolean {
+    return this.getDecodedAccessToken(sessionStorage.getItem('jwt'))['identity'] === 'admin';
   }
 
-  authenticateUser(){
-
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return {};
+    }
   }
 }

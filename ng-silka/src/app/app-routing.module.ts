@@ -8,6 +8,7 @@ import {LoggedUserGuard} from "./user/logged-user.guard";
 import {LoginComponent} from "./login/login.component";
 import {ChangePasswordComponent} from "./change-password/change-password.component";
 import {UserListComponent} from "./user-list/user-list.component";
+import {InactiveUserListComponent} from "./inactive-user-list/inactive-user-list.component";
 
 
 const routes: Routes = [
@@ -37,6 +38,10 @@ const routes: Routes = [
           path: 'user-list',
           component: UserListComponent
         },
+        {
+          path: 'inactive-user-list',
+          component: InactiveUserListComponent
+        }
       ]
   },
   {
@@ -47,6 +52,10 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent
       },
+      {
+        path: 'register',
+        component: RegistrationComponent
+      }
     ]
   },
   {
