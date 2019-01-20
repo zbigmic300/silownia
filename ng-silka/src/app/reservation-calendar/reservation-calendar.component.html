@@ -1,0 +1,20 @@
+<div style="display:flex; margin-bottom: 10px; align-items:center">
+  <button class="range-change-button" mat-raised-button color="primary" [(viewDate)]="date" mwlCalendarPreviousView
+          [view]="view">Previous
+  </button>
+  <button class="range-change-button" mat-raised-button color="primary" [(viewDate)]="date" mwlCalendarToday>Current
+  </button>
+  <button class="range-change-button" mat-raised-button color="primary" [(viewDate)]="date" mwlCalendarNextView
+          [view]="view">Next
+  </button>
+  <div style="color: white; margin-left: auto; margin-right: 5px"><h3 style="margin: 0">{{date |date:'yyyy'}}</h3></div>
+</div>
+
+<mwl-calendar-week-view eve [eventTemplate]="customCellTemplate" weekStartsOn="1"
+                        (hourSegmentClicked)="addReservation($event)" hourSegments="1" [viewDate]="date"
+                        [events]="events"></mwl-calendar-week-view>
+
+
+<ng-template #customCellTemplate let-weekEvent="weekEvent">
+  <div style="text-align: center">{{ weekEvent.event.title }} </div>
+</ng-template>

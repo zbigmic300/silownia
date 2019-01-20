@@ -1,0 +1,8 @@
+.example-card {
+  max-width: 400px;
+}
+
+::ng-deep .mat-focused .input.mat-input-element {
+  color: red;
+}
+

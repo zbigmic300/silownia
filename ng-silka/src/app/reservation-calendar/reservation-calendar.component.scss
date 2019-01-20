@@ -1,0 +1,43 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+
+.range-change-button {
+  margin-left: 5px;
+
+  &:hover {
+    background-color: #3030A0;
+  }
+}
+
+::ng-deep .cal-week-view .cal-time-events .cal-event-container {
+  cursor: default;
+}
+
+::ng-deep .cal-week-view .cal-header.cal-weekend span {
+  color: white;
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+::ng-deep .cal-week-view .cal-header.cal-today {
+  background-color: black;
+  opacity: 0.9;
+}
+
+::ng-deep .cal-week-view .cal-hour-odd {
+  background-color: #303030;
+}
+
+#year {
+  color: $mat-elevation-color;
+}
+
+::ng-deep .cal-week-view .cal-day-headers .cal-header:hover, .cal-week-view .cal-day-headers .cal-drag-over {
+  background-color: #303030;
+}
+
+::ng-deep .cal-week-view .cal-time-events .cal-day-columns:not(.cal-resize-active) .cal-hour-segment:hover {
+  cursor: pointer;
+}
