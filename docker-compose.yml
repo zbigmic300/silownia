@@ -6,6 +6,12 @@ services:
       - db_net
     ports:
       - "5433:5432"
+  front:
+    image: zbigmic300/silownia-front
+    networks:
+      - db_net
+    ports:
+      - "4200:4200"
   app:
     image: zbigmic300/silownia-app
     ports:
