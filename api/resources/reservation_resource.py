@@ -4,8 +4,8 @@ from flask_restful import Resource
 from api.config import dao, app
 from api.models.reservations import Reservation
 from api.models.schemas import ReservationSchema
-from api.resources.requests import reservationRequest
-from api.utils.datetime_utils import startOfWeek, currentDate
+from api.resources.requests import reservationRequest, weekReservationRequest
+from api.utils.datetime_utils import startOfWeek, currentDate, endOfWeek
 from api.utils.reservation_utils import checkDateRelations, checkOverlapping, checkUserBookedInterval
 from api.utils.response_utils import defaultErrorResponse, response, defaultErrorLogMessage
 
@@ -91,8 +91,13 @@ class WeekReservationsResource(Resource):
     # get reservation for this week
     @jwt_required
     def get(self):
-        now = currentDate()
-        week_start = startOfWeek(now)
+        request = weekReservationRequest.parse_args()
+        date = request.get('date')
+        if not date:
+            date = currentDate()
+        week_start = startOfWeek(date)
+        week_end = endOfWeek(date)
 
-        result = dao.query(Reservation).filter(Reservation.start_date >= week_start).all()
+        result = dao.query(Reservation).filter(
+            Reservation.start_date >= week_start, Reservation.end_date <= week_end).all()
         return many_reservation_schema.dump(result).data

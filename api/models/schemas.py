@@ -22,3 +22,5 @@ class ReservationSchema(ma.ModelSchema):
         sqla_session = db.session
 
     user = ma.Nested(UserSchema, only=['login', 'first_name', 'last_name', 'room'])
+    start_date = ma.DateTime(format='%Y-%m-%dT%H:%M:%S')
+    end_date = ma.DateTime(format='%Y-%m-%dT%H:%M:%S')
