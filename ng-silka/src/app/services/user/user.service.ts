@@ -16,7 +16,7 @@ export class UserService {
   }
 
   getInactiveUsers(): Observable<[]> {
-    return <Observable<[]>>this.http.get('http://localhost:4000/admin/users?status=W', {} );
+    return <Observable<[]>>this.http.get('http://localhost:4000/admin/users?status=I', {} );
   }
 
   activate(userId: number) {
@@ -55,7 +55,7 @@ export class UserService {
   }
 
   changePassword(data: any) {
-    return this.http.patch('localhost:4000/login', data, {headers: {'Content-Type': 'application/json'}});
+    return this.http.patch('http://localhost:4000/changePassword', data, {headers: {'Content-Type': 'application/json'}});
   }
 }
 

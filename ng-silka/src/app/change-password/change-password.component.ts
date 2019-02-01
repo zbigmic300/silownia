@@ -27,6 +27,7 @@ export class ChangePasswordComponent implements OnInit {
   changePassword(form: FormGroup) {
     this.userService.changePassword(JSON.stringify(form.value))
       .subscribe(() => this.openSnackBar('Password changed', ''));
+    this.form.reset();
   }
 
   openSnackBar(message: string, action: string) {

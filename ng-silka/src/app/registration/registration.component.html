@@ -34,7 +34,8 @@
             <input matInput formControlName="room" placeholder="Room">
           </mat-form-field>
         </div>
-        <div class="mat-small">Already registered? <a style="color: dodgerblue" [routerLink]="['../','login']">Sign in</a></div>
+        <div class="mat-small" [ngStyle]="{'display': userLogged() ? 'none' : 'block'}">
+          Already registered? <a style="color: dodgerblue" [routerLink]="['../','login']">Sign in</a></div>
       </mat-card-content>
       <mat-card-actions style="margin-left: 0px; margin-right: 0px;">
         <div>

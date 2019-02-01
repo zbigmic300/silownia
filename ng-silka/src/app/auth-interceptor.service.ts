@@ -45,7 +45,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
-        if (error.status == 401 && !error.url.includes('/refresh')) {
+        if (error.status == 401 && !error.url.includes('/refresh') && !error.url.includes('/login')) {
           this.userService.refreshToken().subscribe();
         } else if (error.status == 401 && error.url.includes('/refresh')) {
           this.router.navigate(['u', 'login']);

@@ -28,6 +28,10 @@ export class AppNavigationComponent {
     return this.loggedUserService.isAdmin;
   }
 
+  getLogin(){
+    return this.loggedUserService.getLogin;
+  }
+
   logout(){
     this.userService.logout().subscribe(res => {
       sessionStorage.clear();

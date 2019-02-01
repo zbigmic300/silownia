@@ -1,11 +1,12 @@
 <div style="display:flex; margin-bottom: 10px; align-items:center">
-  <button class="range-change-button" mat-raised-button color="primary" [(viewDate)]="date" mwlCalendarPreviousView
-          [view]="view">Previous
+  <button class="range-change-button" mat-raised-button color="primary" [(viewDate)]="date" (viewDateChange)="refresh()"
+          mwlCalendarPreviousView [view]="view">Previous
   </button>
-  <button class="range-change-button" mat-raised-button color="primary" [(viewDate)]="date" mwlCalendarToday>Current
+  <button class="range-change-button" mat-raised-button color="primary" [(viewDate)]="date" (viewDateChange)="refresh()"
+          mwlCalendarToday>Current
   </button>
-  <button class="range-change-button" mat-raised-button color="primary" [(viewDate)]="date" mwlCalendarNextView
-          [view]="view">Next
+  <button class="range-change-button" mat-raised-button color="primary" [(viewDate)]="date" (viewDateChange)="refresh()"
+          mwlCalendarNextView [view]="view">Next
   </button>
   <div style="color: white; margin-left: auto; margin-right: 5px"><h3 style="margin: 0">{{date |date:'yyyy'}}</h3></div>
 </div>
@@ -16,5 +17,5 @@
 
 
 <ng-template #customCellTemplate let-weekEvent="weekEvent">
-  <div style="text-align: center">{{ weekEvent.event.title }} </div>
+  <div style="text-align: center; padding-top: 5px;">{{ weekEvent.event.title }} </div>
 </ng-template>

@@ -28,7 +28,12 @@ export class ReservationCalendarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.reservationService.getWeekReservations()
+    this.refresh();
+  }
+
+  refresh() {
+    let date: any = this.datePipe.transform(this.date, 'yyyy-MM-ddTHH:mm:ss');
+    this.reservationService.getWeekReservations(date)
       .subscribe((reservations: any[]) => {
         this.events = reservations.map(val => {
           return {start: new Date(val.start_date), color: {primary: 'white', secondary: 'white'}, title: `${val.user.first_name} ${val.user.last_name}`}
@@ -47,7 +52,10 @@ export class ReservationCalendarComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       result && this.reservationService.addReservation(JSON.stringify({start_date: startDate, end_date: endDate}))
-        .subscribe(() => this.openSnackBar('Reservation added', ''));
+        .subscribe(() => {
+          this.openSnackBar('Reservation added', '');
+          this.refresh();
+        });
     });
   }
 
