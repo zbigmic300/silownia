@@ -14,8 +14,7 @@ export class ReservationService {
     return this.http.get('http://localhost:4000/reservations')
   }
 
-  getWeekReservations() {
-    return this.http.get('http://localhost:4000/week/reservations')
+  getWeekReservations(date: Date) {
+    return this.http.get('http://localhost:4000/week/reservations?date=' + date, {} );
   }
-
 }

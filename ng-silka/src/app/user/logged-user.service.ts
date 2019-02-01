@@ -5,7 +5,11 @@ import * as jwt_decode from "jwt-decode";
 export class LoggedUserService {
 
   get isAdmin(): boolean {
-    return this.getDecodedAccessToken(sessionStorage.getItem('jwt'))['identity'] === 'admin';
+    return this.getDecodedAccessToken(sessionStorage.getItem('jwt'))['role'] === 'admin';
+  }
+
+  get getLogin(): string {
+    return this.getDecodedAccessToken(sessionStorage.getItem('jwt'))['identity'];
   }
 
   getDecodedAccessToken(token: string): any {
