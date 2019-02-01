@@ -22,7 +22,6 @@ class User(db.Model, Updateable, Removable):
     reservations = db.relationship('Reservation', back_populates='user', lazy=True)
 
     # user statuses
-    WAITING_FOR_ACCEPTANCE = 'W'
     INACTIVE = 'I'
     ACTIVE = 'A'
 

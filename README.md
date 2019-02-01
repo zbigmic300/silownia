@@ -160,3 +160,5 @@ Application should work in your host on http://localhost:4000/login
 - GET  
   - description: get this weeks reservations  
   - jwt: access_token  
+  - request:  
+    - date, type=date with format (%Y-%m-%dT%H:%M:%S), required=False  

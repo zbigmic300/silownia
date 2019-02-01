@@ -59,7 +59,7 @@ class UserResource(Resource):
         new_user.first_name = request.get('first_name')
         new_user.last_name = request.get('last_name')
         new_user.room = request.get('room')
-        new_user.status = User.WAITING_FOR_ACCEPTANCE
+        new_user.status = User.INACTIVE
 
         deduplication = dao.getByUnique(User, 'login', new_user.login)
         if deduplication:

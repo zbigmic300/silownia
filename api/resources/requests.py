@@ -52,3 +52,6 @@ logoutRequest.add_argument('refresh_token', type=str, required=True)
 reservationRequest = reqparse.RequestParser(bundle_errors=True)
 reservationRequest.add_argument('start_date', type=lambda x: datetime.strptime(x, '%Y-%m-%dT%H:%M:%S'), required=True)
 reservationRequest.add_argument('end_date', type=lambda x: datetime.strptime(x, '%Y-%m-%dT%H:%M:%S'), required=True)
+
+weekReservationRequest = reqparse.RequestParser(bundle_errors=True)
+weekReservationRequest.add_argument('date', type=lambda x: datetime.strptime(x, '%Y-%m-%dT%H:%M:%S'), required=False)
